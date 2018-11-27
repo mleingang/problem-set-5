@@ -163,7 +163,7 @@ function credit() {
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+  let randomNumber = Math.random()
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
@@ -268,7 +268,11 @@ function gymnastics() {
    *       scores.push(secondScore);  // will likely be different than mine
    */
 
+   let p = document.getElementById("gymnastics-output");
 
+   scores = prompt("Please enter a number between 0.0 and 10.0.");
+   total = scores.push(total + scores);
+   total = scores.push();
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
