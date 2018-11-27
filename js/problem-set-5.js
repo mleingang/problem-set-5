@@ -199,6 +199,31 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
+  let p = document.getElementById('hurricane-output');
+
+  do {
+    windspeed = prompt("Please enter a positive number.");
+    windspeed = parseFloat(windspeed);
+  }
+
+  while(isNaN(windspeed) || windspeed < 0 || Number.isInteger(windspeed) == false){
+  }
+
+  if(windspeed >= 157){
+    p.innerHTML = "Category 5 Hurricane.";
+  } else if(windspeed >= 130){
+    p.innerHTML = "Category 4 Hurricane.";
+  } else if (windspeed >= 111){
+    p.innerHTML = "Category 3 Hurricane.";
+  } else if(windspeed >= 96){
+    p.innerHTML = "Category 2 Hurricane.";
+  } else if(windspeed >= 74){
+    p.innerHTML = "Category 1 Hurricane.";
+  } else if (windspeed >= 39){
+    p.innerHTML = "Tropical Storm.";
+  } else {
+    p.innerHTML = "The skies are clear...";
+  }
 
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
@@ -242,6 +267,8 @@ function gymnastics() {
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
+
+
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
