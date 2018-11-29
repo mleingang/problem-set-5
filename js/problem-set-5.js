@@ -163,7 +163,32 @@ function credit() {
 
 function guess() {
 
-  let randomNumber = Math.random()
+  let p = document.getElementById("guess-output");
+  let randomNumber = Math.floor(((Math.random() * 1001) + 1));
+  let numberOfAttempts = 0;
+
+  attempt = prompt("Guess a number between 1 and 1000.");
+
+
+
+  while(attempt !== randomNumber){
+    while(attempt < 1 || attempt > 1000 || Number.isInteger(attempt)==false){
+      attempt = prompt("Please try again. Guess a number between 1 and 1000.");
+      break;
+    }
+    if(attempt >= randomNumber){
+      numberOfAttempts = numberOfAttempts + 1;
+      p.innerHTML = `That guess was too high.<br/>Number of guesses: ${numberOfAttempts}`;
+    } else if (attempt <= randomNumber){
+      numberOfAttempts = numberOfAttempts + 1;
+      p.innerHTML = "That guess was too low.";
+    }
+  }
+
+  while(attempt == randomNumber){
+    numberOfAttempts = numberOfAttempts + 1;
+    p.innerHTML = `You guessed it! The number was ${randomNumber}.<br/>That took you ${numberOfAttempts} tries.`;
+  }
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
