@@ -166,30 +166,27 @@ function guess() {
   let p = document.getElementById("guess-output");
   let randomNumber = Math.floor(((Math.random() * 1001) + 1));
   let numberOfAttempts = 0;
-
-  attempt = prompt("Guess a number between 1 and 1000.");
-
-
+  let attempt;
 
   while(attempt !== randomNumber){
-    while(attempt < 1 || attempt > 1000 || Number.isInteger(attempt)==false){
-      attempt = prompt("Please try again. Guess a number between 1 and 1000.");
-      break;
-    }
-    if(attempt >= randomNumber){
-      numberOfAttempts = numberOfAttempts + 1;
-      p.innerHTML = `That guess was too high.<br/>Number of guesses: ${numberOfAttempts}`;
-    } else if (attempt <= randomNumber){
-      numberOfAttempts = numberOfAttempts + 1;
-      p.innerHTML = "That guess was too low.";
-    }
-  }
+      do{
+        attempt = Number(prompt("Guess a number between 1 and 1000."));
+      } while (attempt < 1 || attempt > 1000);
 
-  while(attempt == randomNumber){
-    numberOfAttempts = numberOfAttempts + 1;
-    p.innerHTML = `You guessed it! The number was ${randomNumber}.<br/>That took you ${numberOfAttempts} tries.`;
-  }
+        // attempt = prompt("Please try again. Guess a number between 1 and 1000.")
 
+      if(attempt > randomNumber){
+        numberOfAttempts = numberOfAttempts + 1;
+        alert(`That guess was too high. Number of guesses: ${numberOfAttempts}`);
+    } else if (attempt < randomNumber){
+        numberOfAttempts = numberOfAttempts + 1;
+        alert(`That guess was too low. Number of guesses: ${numberOfAttempts}`);
+    } else if (attempt == randomNumber){
+      numberOfAttempts = numberOfAttempts + 1;
+      alert(`You guessed it!`);
+      p.innerHTML = `The number was ${randomNumber}!<br/>That took you ${numberOfAttempts} tries.`;
+  }
+}
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
   ////////////////// DO NOT MODIFY
@@ -227,12 +224,8 @@ function hurricane() {
   let p = document.getElementById('hurricane-output');
 
   do {
-    windspeed = prompt("Please enter a positive number.");
-    windspeed = parseFloat(windspeed);
-  }
-
-  while(isNaN(windspeed) || windspeed < 0 || Number.isInteger(windspeed) == false){
-  }
+    windspeed = Number(prompt("Please enter a positive number."));
+  } while(isNaN(windspeed) || windspeed < 0 || Number.isInteger(windspeed) == false);
 
   if(windspeed >= 157){
     p.innerHTML = "Category 5 Hurricane.";
@@ -247,7 +240,7 @@ function hurricane() {
   } else if (windspeed >= 39){
     p.innerHTML = "Tropical Storm.";
   } else {
-    p.innerHTML = "The skies are clear...";
+    p.innerHTML = "The skies are calm...";
   }
 
   ///////////////////////////////// DO NOT MODIFY
