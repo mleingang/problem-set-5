@@ -294,18 +294,17 @@ function gymnastics() {
    for (let i = 0; i < 6; i++){
      do{
        input = prompt("Please enter a number between 0.0 and 10.0.");
-     } while(input < 0 || input > 10)
-       scores.push();
+     } while(input < 0 || input > 10);
+     console.log(input);
+       scores.push(input);
 
    lowestScore = Math.min(scores);
-   p.innerHTML = `Discarded: ${lowestScore}`
+   p.innerHTML = `Discarded: ${lowestScore}`;
 
-   scores = scores - Math.min(scores);
-
+}
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
-}
 }
 /*
  * Report Card. 5 points.
