@@ -28,6 +28,7 @@ function mario() {
 
   let div = document.getElementById("mario-easy");
 
+
   // height = prompt("Enter a height between 1 and 23.");
   // while (height > 23){
   //   prompt("Please try again. Enter a height between 1 and 23.");
@@ -124,7 +125,7 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -293,17 +294,26 @@ function gymnastics() {
    *       scores.push(secondScore);  // will likely be different than mine
    */
 
+   let input;
    let p = document.getElementById("gymnastics-output");
+   let lowestScore;
 
-   scores = prompt("Please enter a number between 0.0 and 10.0.");
-   total = scores.push(total + scores);
-   total = scores.push();
+   for (let i = 0; i < 6; i++){
+     do{
+       input = prompt("Please enter a number between 0.0 and 10.0.");
+     } while(input < 0 || input > 10)
+       scores.push();
+
+   lowestScore = Math.min(scores);
+   p.innerHTML = `Discarded: ${lowestScore}`
+
+   scores = scores - Math.min(scores);
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
 }
-
+}
 /*
  * Report Card. 5 points.
  *
