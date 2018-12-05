@@ -29,6 +29,9 @@ function mario() {
   let div = document.getElementById("mario-easy");
 
 
+
+  div.innerHTML = `<pre><code></code></pre>`
+
   // height = prompt("Enter a height between 1 and 23.");
   // while (height > 23){
   //   prompt("Please try again. Enter a height between 1 and 23.");
@@ -289,19 +292,22 @@ function gymnastics() {
 
    let input;
    let p = document.getElementById("gymnastics-output");
-   let lowestScore;
 
    for (let i = 0; i < 6; i++){
      do{
        input = prompt("Please enter a number between 0.0 and 10.0.");
      } while(input < 0 || input > 10);
-     console.log(input);
-       scores.push(input);
+     scores.push(input);
+   }
 
-   lowestScore = Math.min(scores);
-   p.innerHTML = `Discarded: ${lowestScore}`;
+   let lowestScore = Math.min(...scores);
+   let highestScore = Math.max(...scores);
+   total = scores.reduce((a,b) => a + b, 0) - lowestScore - highestScore;
+   let averageScore = ((total- lowestScore - highestScore)/4).toFixed(2);
 
-}
+   p.innerHTML = `Discarded: ${lowestScore}, ${highestScore}<br/>
+                  Your score: ${averageScore}`;
+
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
