@@ -295,7 +295,7 @@ function gymnastics() {
 
    for (let i = 0; i < 6; i++){
      do{
-       input = prompt("Please enter a number between 0.0 and 10.0.");
+       input = Number(prompt("Please enter a number between 0.0 and 10.0."));
      } while(input < 0 || input > 10);
      scores.push(input);
    }
@@ -303,10 +303,9 @@ function gymnastics() {
    let lowestScore = Math.min(...scores);
    let highestScore = Math.max(...scores);
    total = scores.reduce((a,b) => a + b, 0) - lowestScore - highestScore;
-   let averageScore = ((total- lowestScore - highestScore)/4).toFixed(2);
+   let averageScore = (total/4).toFixed(2);
 
-   p.innerHTML = `Discarded: ${lowestScore}, ${highestScore}<br/>
-                  Your score: ${averageScore}`;
+   p.innerHTML = `Discarded: ${lowestScore}, ${highestScore}<br/>Score: ${averageScore}`;
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
