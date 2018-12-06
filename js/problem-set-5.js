@@ -28,6 +28,22 @@ function mario() {
 
   let div = document.getElementById("mario-easy");
 
+  do{
+    height = Number(prompt("Enter a height between 1 and 23."));
+  } while (height < 1 || height > 23)
+
+  let numRows = height;
+  let numHash = 1 + numRows;
+  let numSpaces = (1 + height) - numHash;
+
+
+  for (i=0; i < numRows; i++){
+
+  }
+
+  for (i = 0; i < numSpaces; i++){
+    let
+  }
 
 
   div.innerHTML = `<pre><code></code></pre>`
@@ -186,8 +202,8 @@ function guess() {
         numberOfAttempts = numberOfAttempts + 1;
         alert(`That guess was too low. Number of guesses: ${numberOfAttempts}`);
     } else if (attempt == randomNumber){
-      numberOfAttempts = numberOfAttempts + 1;
-      alert(`You guessed it!`);
+        numberOfAttempts = numberOfAttempts + 1;
+        alert(`You guessed it!`);
       p.innerHTML = `The number was ${randomNumber}!<br/>That took you ${numberOfAttempts} tries.`;
   }
 }
@@ -357,6 +373,8 @@ function reportCard() {
    *       representative of the number of tests, quizzes, and homework
    *       grades the user enters, respectively.
    */
+
+
 
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY
