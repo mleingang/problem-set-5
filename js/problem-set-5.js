@@ -418,31 +418,52 @@ function reportCard() {
 
    let testScores = [];
 
-   while (input != -1){
-     do{
-       input = Number(prompt("Please enter a test score between 0.0 and 100.0. Enter -1 when you have finished."));
-     } while(input < 0 || input > 100);
-     testScores.push(input);
+   while (1){
+     input = Number(prompt("Please enter a test score between 0.0 and 10.0. Enter -1 when you have finished."));
+     if (input == -1){
+       break;
+     }
+     if (input >= 0 && input <= 100){
+       testScores.push(input);
+     } else {
+       alert("Invalid test score, please try again.");
+     }
    }
    alert("You've entered all your test grades.");
 
    let quizScores = [];
 
-     do{
-       input = Number(prompt("Please enter a quiz score between 0.0 and 10.0. Enter -1 when you have finished."));
-     } while(input < 0 || input > 100);
-     quizScores.push(input);
+   while (1){
+     input = Number(prompt("Please enter a quiz score between 0.0 and 10.0. Enter -1 when you have finished."));
+     if (input == -1){
+       break;
+     }
+     if (input >= 0 && input <= 100){
+       quizScores.push(input);
+     } else {
+       alert("Invalid quiz score, please try again.");
+     }
+   }
+   alert("You've entered all your quiz grades.");
 
    let homeworkScores = [];
 
-     do{
-       input = Number(prompt("Please enter a homework score between 0.0 and 10.0. Enter -1 when you have finished."));
-     } while(input < 0 || input > 100);
-     homeworkScores.push(input);
+   while (1){
+     input = Number(prompt("Please enter a homework score between 0.0 and 10.0. Enter -1 when you have finished."));
+     if (input == -1){
+       break;
+     }
+     if (input >= 0 && input <= 100){
+       homeworkScores.push(input);
+     } else {
+       alert("Invalid homework score, please try again.");
+     }
+   }
+   alert("You've entered all your homework scores.");
 
-   testTotal = Math.add(testScores);
-   quizTotal = Math.add(quizScores);
-   homeworkTotal = Math.add(homeworkScores);
+   testTotal = testScores.reduce((a,b) => a + b, 0);
+   quizTotal = quizScores.reduce((a,b) => a + b, 0);
+   homeworkTotal = homeworkScores.reduce((a,b) => a + b, 0);
 
    tests = testScores.length;
    quizzes = quizScores.length;
@@ -452,13 +473,9 @@ function reportCard() {
    let quizAvg = quizTotal/quizzes;
    let homeworkAvg = homeworkTotal/homeworks;
 
-   testAvg = testAvg * 0.6;
-   quizAvg = quizAvg * 0.3;
-   homeworkAvg = homeworkAvg * 0.10;
+   let finalGrade = (testAvg * 0.6) + (quizAvg * 0.3) + (homeworkAvg * 0.1);
 
-   let finalGrade = testAvg + quizAvg + homeworkAvg;
-
-   p.innerHTML = finalGrade;
+   p.innerHTML = "Tests: " + testAvg.toFixed(2) +"<br/>Quizzes: " + quizAvg.toFixed(2) +"<br/>Homework: " + homeworkAvg.toFixed(2) +"<br/>Grade: " + finalGrade.toFixed(2);
 
 
   /////////////////////// DO NOT MODIFY
