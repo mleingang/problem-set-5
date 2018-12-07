@@ -26,27 +26,33 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  let div = document.getElementById("mario-easy");
+  let div = document.getElementById("mario-easy-output");
 
   do{
     height = Number(prompt("Enter a height between 1 and 23."));
   } while (height < 1 || height > 23)
 
-  let numRows = height;
-  let numHash = 1 + numRows;
-  let numSpaces = (1 + height) - numHash;
+// the number of rows = the height
+// the number of #s = 1 + row number (i.e. row 1, row 2, etc.)
+// the number of spaces = (1 + height) - number of #s
 
+  let numHash = 0;
+  let numSpace = 0;
+  let pyramid = "";
 
-  for (i=0; i < numRows; i++){
-
+  for (i = 0; i < height; i++){
+    numHash = 2 + i;
+    numSpace = (1 + height) - numHash;
+    for (i2 = 0; i2 < numSpace; i2++){
+      pyramid = pyramid + "&nbsp;";
+    }
+    for (i3 = 0; i3 < numHash; i3++){
+      pyramid = pyramid + "#";
+    }
+    pyramid = pyramid + "<br>";
   }
 
-  for (i = 0; i < numSpaces; i++){
-    let
-  }
-
-
-  div.innerHTML = `<pre><code></code></pre>`
+  div.innerHTML = "<pre><code>" + pyramid + "</code></pre>";
 
   // height = prompt("Enter a height between 1 and 23.");
   // while (height > 23){
@@ -91,7 +97,40 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+  let div = document.getElementById("mario-hard-output");
+
+  do{
+    height = Number(prompt("Enter a height between 1 and 23."));
+  } while (height < 1 || height > 23)
+
+// the number of rows = the height
+// the number of #s = 1 + row number (i.e. row 1, row 2, etc.)
+// the number of spaces = (1 + height) - number of #s
+
+  let numHash = 0;
+  let numSpace = 0;
+  let pyramid = "";
+
+  for (i = 0; i < height; i++){
+    numHash = 2 + i;
+    numSpace = (1 + height) - numHash;
+    for (i2 = 0; i2 < numSpace; i2++){
+      pyramid = pyramid + "&nbsp;";
+    }
+    for (i3 = 0; i3 < numHash; i3++){
+      pyramid = pyramid + "#";
+    }
+    pyramid = pyramid + "&nbsp;&nbsp;";
+    for (i4 = 0; i4 < numHash; i4++){
+      pyramid = pyramid + "#";
+    }
+    for (i5 = 0; i5 < numSpace; i5 ++){
+      pyramid = pyramid + "&nbsp;";
+    }
+    pyramid = pyramid + "<br>";
+  }
+
+  div.innerHTML = "<pre><code>" + pyramid + "</code></pre>";
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -374,6 +413,52 @@ function reportCard() {
    *       grades the user enters, respectively.
    */
 
+   let p = document.getElementById("report-card-output");
+   let input = 0;
+
+   let testScores = [];
+
+   while (input != -1){
+     do{
+       input = Number(prompt("Please enter a test score between 0.0 and 100.0. Enter -1 when you have finished."));
+     } while(input < 0 || input > 100);
+     testScores.push(input);
+   }
+   alert("You've entered all your test grades.");
+
+   let quizScores = [];
+
+     do{
+       input = Number(prompt("Please enter a quiz score between 0.0 and 10.0. Enter -1 when you have finished."));
+     } while(input < 0 || input > 100);
+     quizScores.push(input);
+
+   let homeworkScores = [];
+
+     do{
+       input = Number(prompt("Please enter a homework score between 0.0 and 10.0. Enter -1 when you have finished."));
+     } while(input < 0 || input > 100);
+     homeworkScores.push(input);
+
+   testTotal = Math.add(testScores);
+   quizTotal = Math.add(quizScores);
+   homeworkTotal = Math.add(homeworkScores);
+
+   tests = testScores.length;
+   quizzes = quizScores.length;
+   homeworks = homeworkScores.length;
+
+   let testAvg = testTotal/tests;
+   let quizAvg = quizTotal/quizzes;
+   let homeworkAvg = homeworkTotal/homeworks;
+
+   testAvg = testAvg * 0.6;
+   quizAvg = quizAvg * 0.3;
+   homeworkAvg = homeworkAvg * 0.10;
+
+   let finalGrade = testAvg + quizAvg + homeworkAvg;
+
+   p.innerHTML = finalGrade;
 
 
   /////////////////////// DO NOT MODIFY
