@@ -30,7 +30,7 @@ function mario() {
 
   do{
     height = Number(prompt("Enter a height between 1 and 23."));
-  } while (height < 1 || height > 23)
+  } while (height < 1 || height > 23 || isNaN(height) == true)
 
 // the number of rows = the height
 // the number of #s = 1 + row number (i.e. row 1, row 2, etc.)
@@ -101,7 +101,7 @@ function marioAgain() {
 
   do{
     height = Number(prompt("Enter a height between 1 and 23."));
-  } while (height < 1 || height > 23)
+  } while (height < 1 || height > 23 || isNaN(height) == true)
 
 // the number of rows = the height
 // the number of #s = 1 + row number (i.e. row 1, row 2, etc.)
@@ -183,14 +183,46 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-
-
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
    *       variable, do not modify it. If you find it necessary to manipulate
    *       this value, you will need to create a second variable to serve
    *       as a copy of the 'card' variable.
    */
+
+   let p = document.getElementById('credit-output');
+
+   do {
+     card = (prompt("Enter a card number."));
+   } while (card.length < 13 || card.length > 16 || isNaN(card) == true)
+
+   let cardNum = card;
+   let everyOther = [];
+   let extras = [];
+   let cardNumLuhn = cardNum.split("");
+
+   cardNumLuhn = cardNumLuhn.reverse();
+   for (i = 1; i < cardNumLuhn.length; i = i + 2){
+     everyOther.push(Number(cardNumLuhn[i]) * 2);
+   }
+   let step1 = everyOther.reduce((a,b) => a + b, 0);
+
+   for (i = 0; i < cardNumLuhn.length; i = i + 2){
+     extras.push(Number(cardNumLuhn[i]));
+   }
+   let step2 = extras.reduce((a,b) => a + b, 0)
+   cardNumLuhn = step1 + step2;
+   if (cardNumLuhn % 10 != 0){
+     p.innerHTML = "<img src=\"images/invalid.png\"/>";
+   }
+
+   if ((cardNum.length == 13 || cardNum.length == 16) && cardNum.charAt(0) == 4){
+     p.innerHTML = "<img src=\"images/visa.png\"/>";
+   } else if ((cardNum.length == 15) && (cardNum.charAt(0) == 3 || cardNum.charAt(1) == 4 || cardNum.charAt(1) == 7)){
+     p.innerHTML = "<img src=\"images/amex.png\"/>";
+   } else if ((cardNum.length == 16) && (cardNum.charAt(0) == 5 && cardNum.charAt(1) == 1 || cardNum.charAt(1) == 2 || cardNum.charAt(1) == 3 || cardNum.charAt(1) == 4 || cardNum.charAt(1) == 5)){
+     p.innerHTML = "<img src=\"images/mastercard.png\"/>";
+   }
 
   ///////////////////////// DO NOT MODIFY
   check('credit', card); // DO NOT MODIFY
@@ -230,7 +262,7 @@ function guess() {
   while(attempt !== randomNumber){
       do{
         attempt = Number(prompt("Guess a number between 1 and 1000."));
-      } while (attempt < 1 || attempt > 1000);
+      } while (attempt < 1 || attempt > 1000 || isNaN(attempt) == true);
 
         // attempt = prompt("Please try again. Guess a number between 1 and 1000.")
 
@@ -351,7 +383,7 @@ function gymnastics() {
    for (let i = 0; i < 6; i++){
      do{
        input = Number(prompt("Please enter a number between 0.0 and 10.0."));
-     } while(input < 0 || input > 10);
+     } while(input < 0 || input > 10 || isNaN(input) == true);
      scores.push(input);
    }
 
